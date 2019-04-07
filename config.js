@@ -24,7 +24,7 @@ module.exports = {
   ],
   author: {
     name: 'Code Park',
-    photo: '/code-park-logo.jpg',
+    photo: '/code-park-logo.png',
     bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     contacts: {
       email: '#',
