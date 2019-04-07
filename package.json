@@ -13,7 +13,7 @@
     "test": "jest --config ./tests/jest-config.js",
     "test:coverage": "jest --coverage --config ./tests/jest-config.js",
     "test:watch": "jest --watch --config ./tests/jest-config.js",
-    "deploy": "gh-pages -d public -b master",
+    "deploy": "gh-pages -d public",
     "predeploy": "gatsby build"
   },
   "repository": "https://github.com/alxshelepenok/gatsby-starter-lumen",
