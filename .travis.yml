@@ -1,7 +1,5 @@
 language: node_js
 node_js:
-  - '8'
-  - '9'
   - '10'
 install:
   - npm install -g codecov
@@ -14,3 +12,10 @@ script:
 cache:
   directories:
     - node_modules
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
