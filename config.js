@@ -10,8 +10,16 @@ module.exports = {
   googleAnalyticsId: 'UA-137852676-1',
   menu: [
     {
-      label: 'Articles',
+      label: 'Home',
       path: '/'
+    },
+    {
+      label: 'Media',
+      path: '/media',
+    },
+    {
+      label: 'Goals',
+      path: '/goals',
     },
     {
       label: 'About',

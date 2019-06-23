@@ -2,30 +2,26 @@
 
 const path = require('path');
 const _ = require('lodash');
-const createCategoriesPages = require('./pagination/create-categories-pages.js');
-const createTagsPages = require('./pagination/create-tags-pages.js');
-const createPostsPages = require('./pagination/create-posts-pages.js');
+const createFeedsPages = require('./pagination/create-feeds-pages.js');
+const createTablesPages = require('./pagination/create-tables-pages.js');
+const createMediaPages = createTablesPages("Media");
+const createGoalsPages = createTablesPages("Goals");
 
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  // 404
   createPage({
     path: '/404',
     component: path.resolve('./src/templates/not-found-template.js')
   });
-
-  // Tags list
   createPage({
-    path: '/tags',
-    component: path.resolve('./src/templates/tags-list-template.js')
+    path: '/goals',
+    component: path.resolve('./src/templates/goals-list-template.js')
   });
-
-  // Categories list
-  createPage({
-    path: '/categories',
-    component: path.resolve('./src/templates/categories-list-template.js')
-  });
+  //createPage({
+  //  path: '/media',
+  //  component: path.resolve('./src/templates/media-list-template.js')
+  //});
 
   // Posts and pages from markdown
   const result = await graphql(`
@@ -56,19 +52,12 @@ const createPages = async ({ graphql, actions }) => {
         component: path.resolve('./src/templates/page-template.js'),
         context: { slug: edge.node.fields.slug }
       });
-    } else if (_.get(edge, 'node.frontmatter.template') === 'post') {
-      createPage({
-        path: edge.node.fields.slug,
-        component: path.resolve('./src/templates/post-template.js'),
-        context: { slug: edge.node.fields.slug }
-      });
     }
   });
 
-  // Feeds
-  await createTagsPages(graphql, actions);
-  await createCategoriesPages(graphql, actions);
-  await createPostsPages(graphql, actions);
+  await createFeedsPages(graphql, actions);
+  await createMediaPages(graphql, actions);
+  await createGoalsPages(graphql, actions);
 };
 
 
