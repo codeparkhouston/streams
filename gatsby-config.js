@@ -1,7 +1,10 @@
 'use strict';
+require('dotenv').config();
 
 const siteConfig = require('./config.js');
 const postCssPlugins = require('./postcss-config.js');
+
+console.log(process.env.AIRTABLE_API_KEY);
 
 module.exports = {
   siteMetadata: {
@@ -14,6 +17,24 @@ module.exports = {
     author: siteConfig.author
   },
   plugins: [
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+	apiKey: process.env.AIRTABLE_API_KEY, // may instead specify via env, see below
+	tables: [
+	  {
+	    baseId: `appZPOZc1yE6xSVrm`,
+	    tableName: `Goals`,
+	  },
+          {
+	    baseId: `appx2RvGpqOa4e8Lc`,
+	    tableName: `Media`,
+            tableView: `Stream`,
+            mapping: { Media: `fileNode` },
+          },
+	]
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

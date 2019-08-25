@@ -20,6 +20,14 @@ module.exports = {
     {
       label: 'Contact',
       path: '/pages/contacts'
+    },
+    {
+      label: 'Goals',
+      path: '/goals'
+    },
+    {
+      label: 'Pictures',
+      path: '/pictures'
     }
   ],
   author: {
