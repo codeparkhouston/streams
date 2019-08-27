@@ -2,8 +2,8 @@
 
 module.exports = {
   url: 'https://streams.codeparkhouston.org',
-  title: 'Streams by Code Park',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  title: 'Streams | Code Park',
+  subtitle: 'Coding a better City through Curiosity and Confidence.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -14,23 +14,31 @@ module.exports = {
       path: '/'
     },
     {
-      label: 'About me',
+      label: 'About',
       path: '/pages/about'
     },
     {
-      label: 'Contact me',
+      label: 'Contact',
       path: '/pages/contacts'
+    },
+    {
+      label: 'Goals',
+      path: '/goals'
+    },
+    {
+      label: 'Pictures',
+      path: '/pictures'
     }
   ],
   author: {
     name: 'Code Park',
     photo: '/code-park-logo.png',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'Our mission is to provide high quality Computer Science education for all underserved students in the Greater Houston Area.',
     contacts: {
-      email: '#',
+      email: 'hello@codeparkhouston.com',
       telegram: '#',
-      twitter: '#',
-      github: '#',
+      twitter: '@codeparkhouston',
+      github: 'https://github.com/codeparkhouston',
       rss: '#',
       vkontakte: '#'
     }

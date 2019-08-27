@@ -27,6 +27,18 @@ const createPages = async ({ graphql, actions }) => {
     component: path.resolve('./src/templates/categories-list-template.js')
   });
 
+  // Goals list
+  createPage({
+    path: '/goals',
+    component: path.resolve('./src/templates/goals-list-template.js')
+  });
+
+  // Pictures list
+  createPage({
+    path: '/pictures',
+    component: path.resolve('./src/templates/pictures-list-template.js')
+  });
+
   // Posts and pages from markdown
   const result = await graphql(`
     {
@@ -70,6 +82,5 @@ const createPages = async ({ graphql, actions }) => {
   await createCategoriesPages(graphql, actions);
   await createPostsPages(graphql, actions);
 };
-
 
 module.exports = createPages;
