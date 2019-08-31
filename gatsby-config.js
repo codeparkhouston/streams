@@ -1,8 +1,9 @@
+require('dotenv').config();
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Code Park Streams`,
+    description: `Stream of images from Code Park events and meetups.`,
+    author: `@codeparkhouston`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,6 +13,24 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+	apiKey: process.env.AIRTABLE_API_KEY,
+	tables: [
+	  {
+	    baseId: `appZPOZc1yE6xSVrm`,
+	    tableName: `Goals`,
+	  },
+          {
+	    baseId: `appx2RvGpqOa4e8Lc`,
+	    tableName: `Media`,
+            tableView: `Stream`,
+            mapping: { Media: `fileNode` },
+          },
+	]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

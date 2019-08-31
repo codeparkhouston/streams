@@ -1,7 +1,36 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`)
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allAirtable(filter: {table: {eq: "Media"}}) {
+	edges {
+	  node {
+	    data {
+	      Media {
+		localFiles {
+		  childImageSharp {
+		    id
+		  }
+		}
+	      }
+	    }
+	  }
+	}
+      }
+    }
+  `)
+  result.data.allAirtable.edges.forEach(edge => {
+    edge.node.data.Media.localFiles.forEach(({ childImageSharp: { id } }) => {
+      console.log(id);
+      createPage({
+        path: `/media/${id}`,
+	component: path.resolve(`./src/templates/image.js`),
+	context: {
+	  id
+	},
+      });
+    });
+  });
+}

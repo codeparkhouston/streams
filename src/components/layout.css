@@ -620,3 +620,13 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.media-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.media-image {
+  flex: 1;
+  min-width: 100px;
+}
